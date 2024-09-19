@@ -14,9 +14,9 @@ public class Rot13 {
     
     public static void main(String[] args) {
 
-        String[] paraules = { "abc", "xyz", "a", "z", "años", "úaloH" }// 6 paraules
+        String[] paraules = { "abc", "xyz", "a", "z", "años", "úaloH" }; // 6 paraules
 
-        for (int i = 0; i <= paraules.lenght; i++) {
+        for (int i = 0; i <= paraules.length; i++) {
 
             String xifrat = xifraRot13(paraules[i]);
             String desxifrat = desxifratRot13(xifrat);
@@ -31,10 +31,12 @@ public class Rot13 {
         String result = "";
         if (!paraula.isBlank()) {
             // ves comprovant per charAt(i), si cada char coincideix, i llavors sumar-li 13 posicions
+        
         }
+        return "";
     }
     public static String desxifratRot13(String paraula) {
         String result = "";
+        return "";
     }
-
 }
