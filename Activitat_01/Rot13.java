@@ -30,8 +30,8 @@ public class Rot13 {
 
     public static String xifraRot13(String paraula) {
 
-        // final d'encriptació acumulat
-        String result = "";
+        // final d'encriptació acumulat, hem substituit un String mutable per un StringBuffer
+        StringBuffer result = new StringBuffer();
         char letterToCompare;
         int actualPos = 0;
         int resultPos = 0;
@@ -47,7 +47,7 @@ public class Rot13 {
 
                 // deduim si es lletra per decidir si usar l'array Majúscula o Minúscula
                 if (Character.isLetter(letter)) {
-                    // abc
+                    // abc + el codi duplicat per majuscules ho podriem posar en un mètode en comú
                     if (Character.isLowerCase(letter)) {
 
                         // recorrem l'array Minúscula
@@ -71,11 +71,11 @@ public class Rot13 {
                                     finalPos = resultPos % lowerChar.length; // % 40
 
                                     // podem concatenar la lletra encriptada al resultat
-                                    result = result + lowerChar[finalPos];
+                                    result.append(lowerChar[finalPos]);
                                 } else {
                                     // càlcul normal, en cas de que la posició resultant, de la posició actual + 13, 
                                     // sigui igual o menor que el nombre de lletres de l'abecedari
-                                    result = result + lowerChar[resultPos];
+                                    result.append(lowerChar[resultPos]);
                                 }
                                 
                                 // trenca el procés de seguir comparant si troba coincidencia i ja encriptada
@@ -83,7 +83,7 @@ public class Rot13 {
                             }
                             if (k == lowerChar.length - 1) {
                                 // si no ha trencat previament per no coincidir i continua fins arribar a l'últim caràcter de abc, guarda la lletra Minúscula del que sigui sense encriptar
-                                result = result + letter;
+                                result.append(letter);
                             }
                         }
                     // ABC
@@ -95,14 +95,14 @@ public class Rot13 {
                                 resultPos = actualPos + 13;
                                 if (resultPos > upperChar.length - 1) {
                                     finalPos = resultPos % upperChar.length;
-                                    result = result + upperChar[finalPos];
+                                    result.append(upperChar[finalPos]);
                                 } else {
-                                    result = result + upperChar[resultPos];
+                                    result.append(upperChar[resultPos]);
                                 }
                                 break;
                             }
                             if (l == upperChar.length - 1) {
-                                result = result + letter;
+                                result.append(letter);
                             }
                         }
                     }
@@ -111,18 +111,18 @@ public class Rot13 {
                 
                 } else {
                     // si tampoc es lletra, però espais, signes de puntuació, etc, es queda igual, conservant-ho a result.
-                    result = result + letter;
+                    result.append(letter);
                 }
                 // torna a començar la mateixa iteració per el següent caràcter de la paraula.
             }
             // retorna la paraula tractada
-            return result;
+            return result.toString();
         }
         // no retorna res perquè no hi ha paraula
-        return result;
+        return result.toString();
     }
     public static String desxifratRot13(String paraula) {
-        String result = "";
+        StringBuffer result = new StringBuffer();
         char letterToCompare;
         int actualPos;
         int resultPos;
@@ -145,17 +145,17 @@ public class Rot13 {
                                 if (resultPos < 0) {
                                     // a -> z, com que el resultant serà negatiu, apliquem una suma directament 40 chars + ( - resultPos)
                                     finalPos = lowerChar.length + resultPos;
-                                    result = result + lowerChar[finalPos];
+                                    result.append(lowerChar[finalPos]);
                                 } else {
                                     // acumula la lletra transformada si es troba dins la longitud inicial de l'abc
-                                    result = result + lowerChar[resultPos];
+                                    result.append(lowerChar[resultPos]);
                                 }
                                 // trobat
                                 break;
                             }
                             if (k == lowerChar.length - 1) {
                                 // en cas de no sigui la lletra que busquem, acumula sense tractar
-                                result = result + letter;
+                                result.append(letter);
                             }
                         }
                     // ABC
@@ -170,28 +170,28 @@ public class Rot13 {
                                 if (resultPos < 0) {
                                     // a -> z, com que el resultant serà negatiu, apliquem una suma directament 40 chars + ( - resultPos)
                                     finalPos = upperChar.length + resultPos;
-                                    result = result + upperChar[finalPos];
+                                    result.append(upperChar[finalPos]);
                                 } else {
                                     // acumula la lletra transformada si es troba dins la longitud inicial de l'abc
-                                    result = result + upperChar[resultPos];
+                                    result.append(upperChar[resultPos]);
                                 }
                                 // trobat
                                 break;
                             }
                             if (l == upperChar.length - 1) {
                                 // en cas de no sigui la lletra que busquem, acumula sense tractar
-                                result = result + letter;
+                                result.append(letter);
                             }
                         }
                     }
                 } else {
                     // acumula el que sigui si no es lletra igualment a la cadena resultant
-                    result = result + letter;
+                    result.append(letter);
                 }
             }
             // paraula ja desencriptada al finalitzar la itineració
-            return result;
+            return result.toString();
         }
-        return result;
+        return result.toString();
     }
 }
