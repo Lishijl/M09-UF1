@@ -11,20 +11,6 @@
 public class RotX {
     public static final char[] LOWERCHARS = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    public static void main(String[] args) {
-        String[] tests = { "abc", "xyz", "Hola pinÜino, adióS. :D!" };
-        int[] positions = { 2, 6, 10 };
-
-        for (String test : tests) {
-            for (int position : positions) {
-                String xifrat = xifraRotX(test, position);
-                String desxifrat = desxifraRotX(xifrat, position);
-                System.out.printf("%-19s%s%12s%24s%d%-20s%s%n","Original:", test, "->", "Encriptat amb ", position, " posicions:", xifrat);
-                System.out.printf("%-19s%s%12s%24s%d%-20s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat amb ", position, " posicions:", desxifrat);
-                System.out.printf("%-19s%s%n%s%n%n%s%n","Ara desxifrem:", xifrat, "Amb força bruta:",forcaBrutaRotX(xifrat));
-            }
-        }
-    }
     public static String xifraRotX(String paraula, int position) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < paraula.length(); i++) {
@@ -76,7 +62,7 @@ public class RotX {
     }
     public static String forcaBrutaRotX(String xifrat) {
         StringBuffer result = new StringBuffer();
-        for (int i = 0; i < LOWERCHARS.length; i++) {
+        for (int i = 0; i <= LOWERCHARS.length; i++) {
             result.append("Posició - " + i + ":      " + desxifraRotX(xifrat, i) + "\n");
         }
         return result.toString();
@@ -88,5 +74,19 @@ public class RotX {
             }
         }
         return -1;
+    }
+    public static void main(String[] args) {
+        String[] tests = { "abc", "xyz", "Hola pinÜino, adióS. :D!" };
+        int[] positions = { 2, 6, 10 };
+
+        for (String test : tests) {
+            for (int position : positions) {
+                String xifrat = xifraRotX(test, position);
+                String desxifrat = desxifraRotX(xifrat, position);
+                System.out.printf("%-19s%s%12s%24s%d%-20s%s%n","Original:", test, "->", "Encriptat amb ", position, " posicions:", xifrat);
+                System.out.printf("%-19s%s%12s%24s%d%-20s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat amb ", position, " posicions:", desxifrat);
+                System.out.printf("%-19s%s%n%s%n%n%s%n","Ara desxifrem:", xifrat, "Amb força bruta:",forcaBrutaRotX(xifrat));
+            }
+        }
     }
 }
