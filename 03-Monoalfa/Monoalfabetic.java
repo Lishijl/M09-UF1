@@ -128,20 +128,16 @@ public class Monoalfabetic {
         // hem fet a la crida de permutaAlfabet() per barrejar l'ordre de l'abecedari i ho guardem a la variable global
         permutedChars = permutaAlfabet(UPPERCHARS);
 
+        // iteració sobre cada text de testeig i passa el text per tots els mètodes per iteració
         for (String test : tests) {
-            // tirarem aquí cada cadena a xifrar i desxifrar.
-            // recorda tenir en compte que són CASE sensitive, 
-            // per encriptar, caldrà passar-ho tot en MAYUS, però
-            // prèviament, reservem aquesta lletra
 
+            // per test, passa pels 2 mètodes
+            String xifrat = xifraMonoAlfa(test);
+            String desxifrat = desxifraMonoAlfa(xifrat);
 
-            // mètode adicional, posesio, donat un array char, lletra, -> torna posicio de la lletra dins l'array. 
-
-            // una vegada trobat la posició, decideixes, a partir, d'aquest int, quin ARRAY org, o gen, per encriptar o desencriptar. 
-            // per lletra, dins de cada FUNCIÓ, reb CHAR RESULT. mira, CHAR ORIGINAL guardat prèviament
-
-            // pregunta si es MAYUS. -> SI VERIFICA, APPEND. sino.
-            // toLowerCase() <- append 
+            // mostrem els resultats amb formats
+            System.out.printf("%-19s%s%12s%24s%-20s%s%n","Original:", test, "->", "Encriptat:", xifrat);
+            System.out.printf("%-19s%s%12s%24s%-20s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat:", desxifrat);
         }
     }
 }
