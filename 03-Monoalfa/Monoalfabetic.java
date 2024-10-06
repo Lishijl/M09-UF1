@@ -136,8 +136,8 @@ public class Monoalfabetic {
             String desxifrat = desxifraMonoAlfa(xifrat);
 
             // mostrem els resultats amb formats
-            System.out.printf("%-19s%s%12s%24s%-20s%s%n","Original:", test, "->", "Encriptat:", xifrat);
-            System.out.printf("%-19s%s%12s%24s%-20s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat:", desxifrat);
+            System.out.printf("%-15s%-34s%-12s%-15s%s%n","Original:", test, "->", "Encriptat:", xifrat);
+            System.out.printf("%-15s%-34s%-12s%-15s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat:", desxifrat);
         }
     }
 }
