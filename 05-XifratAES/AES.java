@@ -87,7 +87,7 @@ public class AES {
         // copiarem per al nou array de bytes ivPXResult tant l'iv unic i aleatori com
         // també la partXifrada, com que els index a on es copien són 0, la segona part
         // del resultat l'index comença pel 16 fins la longitud de partXifrada
-        System.arraycopy(iv, 0, ivPXResult, 0, MIDA_IV);
+        System.arraycopy(iv, 0, ivPXResult, 0, MIDA_IV);        // l'iv afegit després l'extraurem pel desencriptat
         System.arraycopy(partXif, 0, ivPXResult, MIDA_IV, partXif.length);
 
         // return iv+msgxifrat, en matriu de bytes
@@ -99,16 +99,35 @@ public class AES {
     // que serà llançable
     public static String desxifraAES(byte[] bIvIMsgXifrat, String password) throws Exception {
 
-        // Extreure l'IV.
+        // Extreure l'IV. S'obté a partir de l'array de bytes del missatge 
+        // Xifrat resultant que rep pel paràmetre, generem una nova variable iv, perquè 
+        // la global ha quedat inicialitzada amb el SecureRandom.nextBytes().
+        byte[] iv = new byte[MIDA_IV];  // l'inicialitzem amb 16 espais reservats
+        // copiem només 16 elements desde la posició 0 de l'array de bytes rebut pel paràmetre
+        // i el copiem a l'iv desde l'index 0
+        System.arraycopy(bIvIMsgXifrat, 0, iv, 0, iv.length);
+        IvParameterSpec ivParamS = new IvParameterSpec(iv);
 
         // Extreure la part xifrada.
+        byte[] partXif = new byte[bIvIMsgXifrat.length - MIDA_IV];
+        // ara enlloc de agafar de l'array desde l'index 0, l'agafem desde la posicio 16
+        // perque a partir d'aquí es troba el missatge encriptat i no previ perque és l'iv
+        System.arraycopy(bIvIMsgXifrat, MIDA_IV, partXif, 0, partXif.length);
 
         // Fer hash de la clau
+        byte[] hashPass16B = new byte[MIDA_IV];
+        MessageDigest genH256B = MessageDigest.getInstance(ALGORISME_HASH);
+        genH256B.update(password.getBytes("UTF-8"));
+        System.arraycopy(genH256B.digest(), 0, hashPass16B, 0, hashPass16B.length);
+        SecretKeySpec secretKS = new SecretKeySpec(hashPass16B, ALGORISME_XIFRAT);
 
         // Desxifrar.
+        Cipher cipherDes = Cipher.getInstance(FORMAT_AES);
+        cipherDes.init(Cipher.DECRYPT_MODE, secretKS, ivParamS);
+        byte[] desxifrat = cipherDes.doFinal(partXif);
 
         // return String desxifrat
-        return "";
+        return new String(desxifrat);
     }
 
     // main que executa la lógica del programa
@@ -138,7 +157,7 @@ public class AES {
             System.out.println("--------------------");
             System.out.println("Msg: " + msg);
             System.out.println("Enc: " + new String(bXifrats));
-            System.out.println(desxifrat);
+            System.out.println("DEC: " + desxifrat);
         }
     }
 }
