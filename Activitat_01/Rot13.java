@@ -140,7 +140,7 @@ public class Rot13 {
                             letterToCompare = lowerChar[k];
                             if (letter == letterToCompare) {
                                 actualPos = k;
-                                resultPos = k - 13;
+                                resultPos = actualPos - 13;
                                 // en cas que la posició resultant es menor que 0, resta de nou pel final
                                 if (resultPos < 0) {
                                     // a -> z, com que el resultant serà negatiu, apliquem una suma directament 40 chars + ( - resultPos)
