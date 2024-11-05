@@ -1,8 +1,12 @@
+package src.iticbcn.xifratge;
 import java.util.Random;
 import java.util.List;
 import java.util.ArrayList;
 
 import java.util.Collections;
+
+// declaració del paquet
+package iticbcn.xifratge;
 
 public class XifradorPolialfabetic {
 

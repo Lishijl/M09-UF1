@@ -1,3 +1,4 @@
+package src.iticbcn.xifratge;
 /* Ara el programa enlloc de moure 13 posicions, pots introduïr un paràmetre 
  * extra per a una posició diferent, ficarem 4 posicions possibles pel testing
  * i a més de contenir els dos mètodes xifraRotX i desxifraRotX, hi haurà
@@ -8,10 +9,13 @@
  * 
  * DAM2B: Lishi JL */
 
+// declaracio de paquet
+package iticbcn.xifratge;
+
 public class XifradorRotX {
     public static final char[] LOWERCHARS = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    public static String xifraRotX(String paraula, int position) {
+    public String xifraRotX(String paraula, int position) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < paraula.length(); i++) {
             char originalCh = paraula.charAt(i);
@@ -30,7 +34,7 @@ public class XifradorRotX {
         }
         return result.toString();
     }
-    public static String desxifraRotX(String xifrat, int position) {
+    public String desxifraRotX(String xifrat, int position) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < xifrat.length(); i++) {
             char originalCh = xifrat.charAt(i);
@@ -60,7 +64,7 @@ public class XifradorRotX {
         }
         return result.toString();
     }
-    public static String forcaBrutaRotX(String xifrat) {
+    public String forcaBrutaRotX(String xifrat) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i <= LOWERCHARS.length; i++) {
             result.append("Posició - " + i + ":      " + desxifraRotX(xifrat, i) + "\n");
@@ -75,7 +79,7 @@ public class XifradorRotX {
         }
         return -1;
     }
-    public static void main(String[] args) {
+    public void main(String[] args) {
         String[] tests = { "abc", "xyz", "Hola pinÜino, adióS. :D!" };
         int[] positions = { 2, 6, 10 };
 
