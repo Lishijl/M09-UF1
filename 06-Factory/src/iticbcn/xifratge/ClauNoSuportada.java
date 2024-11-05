@@ -1,9 +1,8 @@
 package src.iticbcn.xifratge;
 
 public class ClauNoSuportada extends Exception {
-    // classe buida?
-    
-    // constructor personalitzat
+
+    // constructor personalitzat, que mostrarà una excepció amb missatge personalitzat
     public ClauNoSuportada(String msg) {
         super(msg);
     }

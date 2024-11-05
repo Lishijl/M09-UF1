@@ -1,7 +1,9 @@
 package src.iticbcn.xifratge;
 
 public class TextXifrat {
+    
     private byte[] textXifrat;
+
     public TextXifrat(byte[] xifrat) { this.textXifrat = xifrat; }
 
     // retornem l'instància de textXifrat en format String, reconvertit amb
