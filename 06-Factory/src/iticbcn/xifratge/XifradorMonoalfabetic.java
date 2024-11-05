@@ -21,10 +21,10 @@ package iticbcn.xifratge;
 public class XifradorMonoalfabetic {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    public static char[] permutedChars;
+    public char[] permutedChars;
 
     // mètode per permutar UPPERCHARS
-    public static char[] permutaAlfabet(char[] original) {
+    public char[] permutaAlfabet(char[] original) {
 
         // ArrayList, llista de tipus objecte Characters, 
         // inicialitzant-lo sense tipus amb el seu builder per defecte.
@@ -62,12 +62,12 @@ public class XifradorMonoalfabetic {
     }
 
     // xifrem el text amb l'array permutat
-    public static String xifraMonoAlfa(String text) {
+    public String xifraMonoAlfa(String text) {
         return convert(text, UPPERCHARS, permutedChars);
     }
 
     // desxifrem el text xifrat amb l'array original UPPERCHARS
-    public static String desxifraMonoAlfa(String textXifrat) {
+    public String desxifraMonoAlfa(String textXifrat) {
         return convert(textXifrat, permutedChars, UPPERCHARS);
     }
     
@@ -75,7 +75,7 @@ public class XifradorMonoalfabetic {
     // d'abecedari rebut sigui l'original o el permutat per 
     // després la conversió, retornarem -1 per a que poguem també
     // afegir caràcters sense convertir
-    public static int trobaPosicio(char[] array, char character) {
+    public int trobaPosicio(char[] array, char character) {
 
         // itera sobre l'array rebut i mira si coincideix els 
         // caràcters per retornar 1 si es verifica
@@ -88,13 +88,13 @@ public class XifradorMonoalfabetic {
     }
 
     // mètode senzill que retorna el caràcter corresponent a la conversió
-    public static char convertChar(int position, char[] inResultArray) {
+    public char convertChar(int position, char[] inResultArray) {
         return inResultArray[position];
     }
 
     // mètode de conversió de text general, ja sigui per xifrar o desxifrar, 
     // dependrà de l'ordre especificat en els paràmetres
-    public static String convert(String textToConvert, char[] originalA, char[] resultA) {
+    public String convert(String textToConvert, char[] originalA, char[] resultA) {
         StringBuffer result = new StringBuffer();
         for(int i = 0; i < textToConvert.length(); i++) {
             char originalCh = textToConvert.charAt(i);

@@ -39,14 +39,14 @@ public class XifradorAES {
         
     // constant mida IV i de clau; array de byte iv de tamany 16; constant de clau
     private static final int MIDA_IV = 16;
-    private static byte[] iv = new byte[MIDA_IV];
+    private byte[] iv = new byte[MIDA_IV];
     // la clau té una longitud variable, el que potser després el hash té 
     // que tenir el mateix tamany que l'IV
     private static final String CLAU = "Q9_?º<m1";
 
     // retorna el xifrat en array de bytes a partir d'una clau i un missatge,
     // mètode que pot generar una excepció, llançable de tipus general
-    public static byte[] xifraAES(String msg, String password) throws Exception {
+    public byte[] xifraAES(String msg, String password) throws Exception {
         // Obtenir els bytes de l’String, extret amb getBytes()
         byte[] bMsg = msg.getBytes();
 
@@ -101,7 +101,7 @@ public class XifradorAES {
     // retorna el desxifrat en String a partir del array de bytes xifrat amb
     // iv i missatge, i la clau, el mètode pot generar una excepció general
     // que serà llançable
-    public static String desxifraAES(byte[] bIvIMsgXifrat, String password) throws Exception {
+    public String desxifraAES(byte[] bIvIMsgXifrat, String password) throws Exception {
 
         // Extreure l'IV. S'obté a partir de l'array de bytes del missatge 
         // Xifrat resultant que rep pel paràmetre, generem una nova variable iv, perquè 

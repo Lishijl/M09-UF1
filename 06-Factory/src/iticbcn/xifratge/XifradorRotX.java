@@ -79,7 +79,7 @@ public class XifradorRotX {
         }
         return -1;
     }
-    public void main(String[] args) {
+    public static void main(String[] args) {
         String[] tests = { "abc", "xyz", "Hola pinÜino, adióS. :D!" };
         int[] positions = { 2, 6, 10 };
 

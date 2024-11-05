@@ -11,18 +11,18 @@ package iticbcn.xifratge;
 public class XifradorPolialfabetic {
 
     private static final int SECRETKEY = 91059;
-    private static Random valueSequence;
+    private Random valueSequence;
 
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
-    public static char[] permutedChars;
+    public char[] permutedChars;
 
     // mètode que inicialitza la classe Random a partir d'una llavor
-    public static void initRandom(int seat) {
+    public void initRandom(int seat) {
         valueSequence = new Random(seat);
     }
     // mètode amb efecte colateral, en l'array de alfabet permutat de la variable global.
     // serà cridat per cada lletra que es vulgui xifrar o desxifrar
-    public static void permutaAlfabet() {
+    public void permutaAlfabet() {
         List<Character> resultList = new ArrayList<>();
         for (char letter : UPPERCHARS) { resultList.add(letter); }
         // el random anirà proporcionant noves barreges amb el shuffle cada vegada que 
@@ -37,20 +37,20 @@ public class XifradorPolialfabetic {
         permutedChars = charResult; 
     }
     // troba la posició en l'array rebut, sigui l'original o la permutada
-    public static int trobaPosicio(char character, char[] arrayOrigen) {
+    public int trobaPosicio(char character, char[] arrayOrigen) {
         for (int i = 0; i < arrayOrigen.length; i++) {
             if (arrayOrigen[i] == character) return i;
         }
         // retorna negatiu si no troba cap coincidencia
         return -1;
     }
-    public static char convertChar(int position, char[] inResultArray) {
+    public char convertChar(int position, char[] inResultArray) {
         // cada char serà convertit, sigui per xifrar o desxifrar, a l'array permutat o 
         // array original segons el cas
         return inResultArray[position];
     }
     // xifra cadena rebuda, amb polialfabet permutats
-    public static String xifraPoliAlfa(String msg) {
+    public String xifraPoliAlfa(String msg) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < msg.length(); i++) {
             // gestionem per lletra
@@ -78,7 +78,7 @@ public class XifradorPolialfabetic {
         return result.toString();
     }
     // desxifra text xifrat amb polialfabet permutats
-    public static String desxifraPoliAlfa(String msgXifrat) {
+    public String desxifraPoliAlfa(String msgXifrat) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < msgXifrat.length(); i++) {
             // gestionem per lletra
