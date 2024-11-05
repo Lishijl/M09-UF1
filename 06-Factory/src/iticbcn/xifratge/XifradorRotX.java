@@ -10,7 +10,7 @@ package src.iticbcn.xifratge;
  * DAM2B: Lishi JL */
 
 // declaracio de paquet
-package iticbcn.xifratge;
+package src.iticbcn.xifratge;
 
 public class XifradorRotX implements Xifrador {
     public static final char[] LOWERCHARS = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 // declaració del paquet
-package iticbcn.xifratge;
+package src.iticbcn.xifratge;
 
 public class XifradorPolialfabetic implements Xifrador {
 

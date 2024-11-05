@@ -16,7 +16,7 @@ package src.iticbcn.xifratge;
 import java.util.*;
 
 // declaració del paquet
-package iticbcn.xifratge;
+package src.iticbcn.xifratge;
 
 public class XifradorMonoalfabetic implements Xifrador {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode

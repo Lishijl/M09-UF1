@@ -28,7 +28,7 @@ import java.security.SecureRandom;              // per fer únic i aleatori l'IV
 import java.security.MessageDigest;             // a on es generarà el hash sha-256
 
 // declaració del paquet
-package iticbcn.xifratge;
+package src.iticbcn.xifratge;
 
 public class XifradorAES implements Xifrador {
     // variables o definicions globals a nivell classe
