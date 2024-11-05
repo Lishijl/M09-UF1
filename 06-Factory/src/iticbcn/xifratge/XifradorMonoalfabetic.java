@@ -18,10 +18,16 @@ import java.util.*;
 // declaració del paquet
 package iticbcn.xifratge;
 
-public class XifradorMonoalfabetic {
+public class XifradorMonoalfabetic implements Xifrador {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
     public char[] permutedChars;
+
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
 
     // mètode per permutar UPPERCHARS
     public char[] permutaAlfabet(char[] original) {

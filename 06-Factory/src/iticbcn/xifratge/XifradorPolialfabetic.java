@@ -8,13 +8,19 @@ import java.util.Collections;
 // declaració del paquet
 package iticbcn.xifratge;
 
-public class XifradorPolialfabetic {
+public class XifradorPolialfabetic implements Xifrador {
 
     private static final int SECRETKEY = 91059;
     private Random valueSequence;
 
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
     public char[] permutedChars;
+
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
 
     // mètode que inicialitza la classe Random a partir d'una llavor
     public void initRandom(int seat) {

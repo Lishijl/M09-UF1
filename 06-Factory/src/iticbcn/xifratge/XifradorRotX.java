@@ -12,9 +12,16 @@ package src.iticbcn.xifratge;
 // declaracio de paquet
 package iticbcn.xifratge;
 
-public class XifradorRotX {
+public class XifradorRotX implements Xifrador {
     public static final char[] LOWERCHARS = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
+    
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
+
     public String xifraRotX(String paraula, int position) {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < paraula.length(); i++) {

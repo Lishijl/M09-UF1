@@ -30,7 +30,7 @@ import java.security.MessageDigest;             // a on es generarà el hash sha
 // declaració del paquet
 package iticbcn.xifratge;
 
-public class XifradorAES {
+public class XifradorAES implements Xifrador {
     // variables o definicions globals a nivell classe
     // Constants, tipus xifrat, tipus hash, tipus format
     public static final String ALGORISME_XIFRAT = "AES";
@@ -43,6 +43,12 @@ public class XifradorAES {
     // la clau té una longitud variable, el que potser després el hash té 
     // que tenir el mateix tamany que l'IV
     private static final String CLAU = "Q9_?º<m1";
+
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
 
     // retorna el xifrat en array de bytes a partir d'una clau i un missatge,
     // mètode que pot generar una excepció, llançable de tipus general
