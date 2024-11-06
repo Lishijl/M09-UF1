@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import java.util.Collections;
 
-
 public class XifradorPolialfabetic implements Xifrador {
 
     //private static final int SECRETKEY = 91059;

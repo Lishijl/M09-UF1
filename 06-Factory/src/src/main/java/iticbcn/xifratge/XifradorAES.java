@@ -30,7 +30,6 @@ import java.security.SecureRandom;              // per fer únic i aleatori l'IV
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;             // a on es generarà el hash sha-256
 
-
 public class XifradorAES implements Xifrador {
     // variables o definicions globals a nivell classe
     // Constants, tipus xifrat, tipus hash, tipus format

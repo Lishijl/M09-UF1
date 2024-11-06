@@ -18,8 +18,6 @@ import java.nio.charset.StandardCharsets;
 // import per poder manipular Llistes, ArrayList.
 import java.util.*;
 
-
-
 public class XifradorMonoalfabetic implements Xifrador {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
