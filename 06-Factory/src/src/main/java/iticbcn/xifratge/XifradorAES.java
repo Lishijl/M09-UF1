@@ -99,6 +99,8 @@ public class XifradorAES implements Xifrador {
             return new TextXifrat(ivPXResult);
         } catch (Exception e) { 
             throw new ClauNoSuportada("Error de xifrat amb AES: " + e.getMessage());
+            // per acabar l'execució del programa en cas de que dongui error mostrant l'error prèviament
+            // System.exit(1);
         }
     }
 

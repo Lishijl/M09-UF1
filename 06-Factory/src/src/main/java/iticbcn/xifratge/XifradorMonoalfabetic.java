@@ -12,6 +12,7 @@ package iticbcn.xifratge;
  * 
  * DAM2B: Lishi JL */
 
+import java.nio.charset.StandardCharsets;
 // import per poder manipular Llistes, ArrayList.
 import java.util.*;
 
@@ -22,12 +23,44 @@ public class XifradorMonoalfabetic implements Xifrador {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
     public char[] permutedChars;
+    
+    // constructor per inicialitzar la permutació abans del xifratge
+    public XifradorMonoalfabetic() {
+        // hem fet a la crida de permutaAlfabet() per barrejar l'ordre de l'abecedari i ho guardem a la variable global
+        this.permutedChars = permutaAlfabet(UPPERCHARS);
+    }
 
     @Override
-    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        // verificació primerament que la clau no és null, llança una excepció personalitzada ClauNoSuportada
+        if (clau != null) {
+            throw new ClauNoSuportada("Xifratge monoalfabètic no suporta clau != null");
+        }
+        // retorna missatge xifrat en String
+        String textXifrat = xifraMonoAlfa(msg);
+
+        // obtenim l'array de bytes a partir d'una conversió amb StandardCharsets.UTF_8
+        byte[] xifratB = textXifrat.getBytes(StandardCharsets.UTF_8);
+
+        // retorna una nova instància de TextXifrat amb l'array de bytes del text xifrat convertit amb StandardCharsets.UTF_8
+        return new TextXifrat(xifratB);
+    }
 
     @Override
-    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        if (clau != null) {
+            throw new ClauNoSuportada("Xifratge monoalfabètic no suporta clau != null");
+        }
+
+        // obtenim els l'array de bytes xifrats de l'objecte TextXifrat
+        byte[] xifratB = xifrat.getBytes();
+
+        // convertim l'array de bytes al String de nou amb StandardCharsets.UTF_8
+        String textXifrat = new String(xifratB, StandardCharsets.UTF_8);
+
+        // desxifrem l'String del textXifrat cridant a desXifraMonoAlfa()
+        return desxifraMonoAlfa(textXifrat);
+    }
 
     // mètode per permutar UPPERCHARS
     public char[] permutaAlfabet(char[] original) {
@@ -128,26 +161,26 @@ public class XifradorMonoalfabetic implements Xifrador {
         // retornem el StringBuffer en format string amb la funció toString()
         return result.toString();
     }
-    
+    /*
     // mètode principal d'execució en que posarà els textos de test per veure que funciona
     // després permuta l'array original, i finalment passa els test per tots els mètodes 
     // per cada iteració.
     public static void main(String[] args) {
-
+        
         String[] tests = { "abc", "xyz", "Hola pinÜino, adióS. :D!" };
-        // hem fet a la crida de permutaAlfabet() per barrejar l'ordre de l'abecedari i ho guardem a la variable global
         permutedChars = permutaAlfabet(UPPERCHARS);
-
+        
         // iteració sobre cada text de testeig i passa el text per tots els mètodes per iteració
         for (String test : tests) {
-
+            
             // per test, passa pels 2 mètodes
             String xifrat = xifraMonoAlfa(test);
             String desxifrat = desxifraMonoAlfa(xifrat);
-
+            
             // mostrem els resultats amb formats
             System.out.printf("%-15s%-34s%-12s%-15s%s%n","Original:", test, "->", "Encriptat:", xifrat);
             System.out.printf("%-15s%-34s%-12s%-15s%s%n%n","Xifrat:", xifrat, "->", "Desxifrat:", desxifrat);
         }
     }
+    */
 }
