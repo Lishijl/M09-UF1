@@ -1,12 +1,13 @@
-package src.iticbcn.xifratge;
+package iticbcn.xifratge;
 
-public class AlgorismeAES extends AlgorismeFactory {
+
+public class AlgorismePolialfabetic extends AlgorismeFactory {
     // sobreescriptura de mètode abstracta segons el tipus d'algorisme del xifratge
     @Override
     public Xifrador creaXifrador() {
-        // l'argorismeAES, crea una nova instància del XifradorAES amb el mètode
+        // l'argorismePolialfabetic, crea una nova instància del XifradorPolialfabetic amb el mètode
         // creaXifrador() sobreescrit que retorna nova instància creada segons el 
         // tipus de xifratge
-        return new XifradorAES();
+        return new XifradorPolialfabetic();
     }
 }

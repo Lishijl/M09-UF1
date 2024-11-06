@@ -1,11 +1,12 @@
+package iticbcn.xifratge;
 /* Test proporcionat que provarà els algorismes de cada xifrador. */
 
-package src.iticbcn.xifratge;
+
 
 public class TestXifratge {
     public static void main(String[] args) {
     
-        // array d'algorismesFActory, que crea noves instàncies segons el tipus de xifratge
+        // array d'algorismesFactory, que crea noves instàncies segons el tipus de xifratge
         AlgorismeFactory[] aFactory = { new AlgorismeAES(), 
                                         new AlgorismeMonoalfabetic(), 
                                         new AlgorismePolialfabetic(), 
@@ -31,7 +32,7 @@ public class TestXifratge {
             AlgorismeFactory alg = aFactory[i];
             // nom obtingut corresponent del xifratge
             String nom = aNames[i];
-            // interficie xifrador, que reb instància del xifrador creat segons el tipus de xifratge
+            // interficie xifrador, que reb instància del xifrador creat segons el tipus de xifratge, AES, mono, poli, rotX
             Xifrador xifrador = alg.creaXifrador();
 
             // separador que es mostra per pantalla

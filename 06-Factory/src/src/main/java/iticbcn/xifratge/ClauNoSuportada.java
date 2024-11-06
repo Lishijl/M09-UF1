@@ -1,4 +1,4 @@
-package src.iticbcn.xifratge;
+package iticbcn.xifratge;
 
 public class ClauNoSuportada extends Exception {
 

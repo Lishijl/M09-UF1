@@ -1,4 +1,4 @@
-package src.iticbcn.xifratge;
+package iticbcn.xifratge;
 /* Ara el programa enlloç de xifrar-lo amb un array de chars ordenats,
  * ho voldrem fer amb un mono-alfabètic que consisteix en permutar 
  * l'abecedari original ja que és una miqueta més segur.
@@ -16,7 +16,7 @@ package src.iticbcn.xifratge;
 import java.util.*;
 
 // declaració del paquet
-package src.iticbcn.xifratge;
+
 
 public class XifradorMonoalfabetic implements Xifrador {
     // variables globals per a que sigui accessible per consultar desde qualsevol mètode

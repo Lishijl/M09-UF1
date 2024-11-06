@@ -1,4 +1,5 @@
-package src.iticbcn.xifratge;
+package iticbcn.xifratge;
+
 // classe concreta AlgorismeRotX que exten de classe abstracta AlgorismeFactory
 public class AlgorismeRotX extends AlgorismeFactory {
 

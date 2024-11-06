@@ -1,4 +1,4 @@
-package src.iticbcn.xifratge;
+package iticbcn.xifratge;
 /* Ara el programa enlloc de moure 13 posicions, pots introduïr un paràmetre 
  * extra per a una posició diferent, ficarem 4 posicions possibles pel testing
  * i a més de contenir els dos mètodes xifraRotX i desxifraRotX, hi haurà
@@ -10,7 +10,7 @@ package src.iticbcn.xifratge;
  * DAM2B: Lishi JL */
 
 // declaracio de paquet
-package src.iticbcn.xifratge;
+
 
 public class XifradorRotX implements Xifrador {
     public static final char[] LOWERCHARS = "aàábcçdeèéfghiìíïjklmnñoòópqrstuùúüvwxyz".toCharArray();
