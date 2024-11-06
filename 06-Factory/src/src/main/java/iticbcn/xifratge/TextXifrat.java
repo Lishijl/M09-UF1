@@ -1,6 +1,5 @@
 package iticbcn.xifratge;
 
-
 public class TextXifrat {
 
     private byte[] textXifrat;

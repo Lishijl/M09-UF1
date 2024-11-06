@@ -1,8 +1,6 @@
 package iticbcn.xifratge;
 /* Test proporcionat que provarà els algorismes de cada xifrador. */
 
-
-
 public class TestXifratge {
     public static void main(String[] args) {
     

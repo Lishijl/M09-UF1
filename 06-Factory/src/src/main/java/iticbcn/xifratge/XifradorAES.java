@@ -1,4 +1,6 @@
+// declaració del paquet
 package iticbcn.xifratge;
+
 /* Ara farem servir un sistema modern pel xifratge i el 
  * desxifratge que és l'AES, Advanced Encryption Standard.
  * Tipus simètric, que consisteix en xifrar per blocs de bits, 
@@ -28,7 +30,6 @@ import java.security.SecureRandom;              // per fer únic i aleatori l'IV
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;             // a on es generarà el hash sha-256
 
-// declaració del paquet
 
 public class XifradorAES implements Xifrador {
     // variables o definicions globals a nivell classe

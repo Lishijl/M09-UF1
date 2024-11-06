@@ -1,6 +1,5 @@
 package iticbcn.xifratge;
 
-
 public class AlgorismePolialfabetic extends AlgorismeFactory {
     // sobreescriptura de mètode abstracta segons el tipus d'algorisme del xifratge
     @Override

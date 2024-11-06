@@ -1,4 +1,6 @@
+// declaració del paquet
 package iticbcn.xifratge;
+
 /* Ara el programa enlloç de xifrar-lo amb un array de chars ordenats,
  * ho voldrem fer amb un mono-alfabètic que consisteix en permutar 
  * l'abecedari original ja que és una miqueta més segur.
@@ -16,7 +18,6 @@ import java.nio.charset.StandardCharsets;
 // import per poder manipular Llistes, ArrayList.
 import java.util.*;
 
-// declaració del paquet
 
 
 public class XifradorMonoalfabetic implements Xifrador {

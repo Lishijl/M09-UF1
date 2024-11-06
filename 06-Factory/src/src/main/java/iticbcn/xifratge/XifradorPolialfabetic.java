@@ -1,29 +1,58 @@
+// declaració del paquet
 package iticbcn.xifratge;
+
 import java.util.Random;
 import java.util.List;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import java.util.Collections;
 
-// declaració del paquet
-
 
 public class XifradorPolialfabetic implements Xifrador {
 
-    private static final int SECRETKEY = 91059;
+    //private static final int SECRETKEY = 91059;
     private Random valueSequence;
 
     public static final char[] UPPERCHARS = "AÀÁBCÇDEÈÉFGHIÌÍÏJKLMNÑOÒÓPQRSTUÙÚÜVWXYZ".toCharArray();
     public char[] permutedChars;
 
     @Override
-    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {}
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        try {
+            // intenta convertir en un long la clau String
+            long clauL = Long.parseLong(clau);
+            // inicialitzem el random amb la llavor abans de xifrar
+            initRandom(clauL);
+            // xifrem el missatge per cada caracter es permuta l'alfabet
+            String msgXifrat = xifraPoliAlfa(msg);
+            // obtenim l'array de bytes a partir d'una conversió amb StandardCharsets.UTF_8
+            byte[] xifratB = msgXifrat.getBytes(StandardCharsets.UTF_8);
+            // retorna una nova instància de TextXifrat amb l'array de bytes del text xifrat convertit amb StandardCharsets.UTF_8
+            return new TextXifrat(xifratB);
+
+        } catch (NumberFormatException e) {
+            // captura l'excepció de la conversió i llença missatge personalitzat per l'excepció de tipus ClauNoSuportada
+            throw new ClauNoSuportada("La clau per xifrat Polialfabètic ha de ser un String convertible a long");
+        }
+    }
 
     @Override
-    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {}
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        try {
+            long clauL = Long.parseLong(clau);
+            // inicialitzem el random amb la llavor abans de xifrar
+            initRandom(clauL);
+            // retorno el resultat de desxifrar el xifrat obtingut del TextXifrat amb el getBytes(), de passar-li l'String
+            // que ha convertit l'array de bytes en new String() amb StandardCharsets.UTF_8
+            return desxifraPoliAlfa(new String(xifrat.getBytes(), StandardCharsets.UTF_8));
+        } catch (NumberFormatException e) {
+            throw new ClauNoSuportada("La clau de Polialfabètic ha de ser un String convertible a long");
+        }
+    }
 
     // mètode que inicialitza la classe Random a partir d'una llavor
-    public void initRandom(int seat) {
+    public void initRandom(long seat) {
         valueSequence = new Random(seat);
     }
     // mètode amb efecte colateral, en l'array de alfabet permutat de la variable global.
@@ -110,11 +139,12 @@ public class XifradorPolialfabetic implements Xifrador {
         // retornem text per cada lletra xifrat amb una nova permutació
         return result.toString();
     }
+    /*
     public static void main(String[] args) {
         // bateria de proves, per cada cadena, 1 polialfa generat de nou permutats
         String msgsTest[] = {"Test 01: àrbitre, coixí, Perímetre",
-                            "Test 02: Taüll, DÍA, año",
-                            "Test 03: Peça, Òrrius, Bòvila"};
+        "Test 02: Taüll, DÍA, año",
+        "Test 03: Peça, Òrrius, Bòvila"};
         // variable d'array de Strings que s'inicialitza amb la longitud d'elements de msgsTest
         String msgsXifrats[] = new String[msgsTest.length];
         
@@ -140,4 +170,5 @@ public class XifradorPolialfabetic implements Xifrador {
             System.out.printf("%-34s -> %s%n", msgsXifrats[i], msgDesxifrat);
         }
     }
+    */
 }
