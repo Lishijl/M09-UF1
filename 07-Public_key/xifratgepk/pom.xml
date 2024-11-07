@@ -13,4 +13,14 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <!-- Llibreries i dependencies, el main utilitza el projecte o 
+    mòdul jaxb-api i el paquet o grup javax.xml.bind, com un namespace -->
+    <dependencies> 
+        <dependency> 
+            <groupId>javax.xml.bind</groupId> 
+            <artifactId>jaxb-api</artifactId> 
+            <version>2.3.1</version> 
+        </dependency> 
+    </dependencies> 
+
 </project>
