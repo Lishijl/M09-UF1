@@ -10,20 +10,20 @@ RESULTATS D'EXECUCIONS:
     Però per pràcticar i familiartizar-me amb el fluxe de treball, pels projectes executaré desde la línia de comandes desde l'arrel del projecte com ara "xifratgepk" que es troba dins del directori de pràctica "07-Public_key" les següents instruccions:
 
 * Per empaquetar i implementar bé les dependencies:
-+ mvn package / mvn install
+##### mvn package / mvn install
 
 * Per poder generar un jar correctament si anteriorment ja s'havia compilat, pots executar prèviament del mvn install:
-+ mvn clean
+##### mvn clean
 
 * Finalment per executar el programa que es troba dins del paquet "iticbcn.xifratge":
-+ mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
+##### mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
 
 #### Per a la pràctica:
 
 07-Public_key - Parella de claus RSA
 =================================
 
-### * Comanda d'execució: mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
+### - Comanda d'execució: mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
 
 "=================================
 
