@@ -20,7 +20,22 @@
             <groupId>javax.xml.bind</groupId> 
             <artifactId>jaxb-api</artifactId> 
             <version>2.3.1</version> 
-        </dependency> 
-    </dependencies> 
-
+        </dependency>
+        <!-- potser més endevant s'usa
+        <dependency>
+            <groupId>iticbcn.xifratge</groupId>
+            <artifactId>src</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            abast de la dependencia dins del cicle de vida del projecte,
+            fases del procés de construcció compilació, prova o empaquetat. 
+            compile: disponible durant tot el cicle de vida del projecte, util 
+            per les dependencies en temps de desenvolupament com d'execució. 
+            es sol poder utilitzar compile en les fases de producció o final
+            <scope>compile</scope>
+            Falta indicar la següent línia en el pom.xml del projecte 06 
+            per a poder empaquetar correctament l'estructura en tipus jar o war segons el cas
+            <packaging>jar</packaging>  Tipo de empaquetado
+        </dependency>
+        -->
+    </dependencies>
 </project>
