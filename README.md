@@ -23,7 +23,7 @@ RESULTATS D'EXECUCIONS:
 07-Public_key - Parella de claus RSA
 =================================
 
-## - Comanda d'execució: mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
+### - Comanda d'execució: mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
 
 "=================================
 
