@@ -5,6 +5,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 
 // imports pel xifratge amb clau RSA
 import javax.crypto.Cipher;
@@ -15,8 +16,12 @@ public class ClauPublica {
     public KeyPair generaParellClausRSA() throws Exception {
         // obté una instància d'un generador de claus tipus RSA
         KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
-        // tamany de la clau de 2048 bits
-        keyGen.initialize(2048);
+
+        // obté una nova instància de SecureRandom
+        SecureRandom secureRandom = new SecureRandom();
+        
+        // tamany de la clau de 2048 bits, i també passem l'argument de SecureRandom per generar la Clau de forma Aleatoria
+        keyGen.initialize(2048, secureRandom);
         // retorna directament la parella de claus generades amb el mètode generateKeyPair() de KeyPairGenerator
         return keyGen.generateKeyPair();
     }
