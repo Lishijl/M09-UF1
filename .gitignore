@@ -1,0 +1,20 @@
+# Ignorar archivos compilados
+*.class
+# *.jar
+# *.war
+# 
+
+# Ignorar directorios de salida de Maven
+# /target/
+
+# Ignorar configuraciones locales de IDEs (si se usa IntelliJ, Eclipse, etc)
+# .idea/
+# .vscode/
+# *.iml
+# .project
+# .classpath
+
+# Otros archivos temporales
+# *.log
+# *.tmp
+# *.swp
