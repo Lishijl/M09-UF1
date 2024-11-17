@@ -1,14 +1,17 @@
 package iticbcn.hashing;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.nio.charset.StandardCharsets;
 import java.util.HexFormat;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 public class Hashes {
 
-    int npass = 0;
+    int npass;
 
     // dos mètodes hashing que genera un hash del password amb un salt amb dos tipus d'algorismes SHA-512 i PBKDF2
     public String getSHA512AmbSalt (String pw, String salt) {
@@ -35,13 +38,45 @@ public class Hashes {
         return hash512;
     }
 
-    public String getPBKDF2AmbSalt (String pw, String salt) { return ""; }
+    public String getPBKDF2AmbSalt (String pw, String salt) {
+        // valor que es retornarà del hash en hexadecimal
+        String hashPBKDF2 = null;
+        try {
+            // contrasenya i salt convertits en array de char i byte per a pasar-li al PBEKeySpec
+            char[] pwCh = pw.toCharArray();
+            byte[] saltB = salt.getBytes(StandardCharsets.UTF_8);
+            // vegades que itera generar el hash
+            int iteracions = 1000;
+            // tamany del hash a generar de 128 bits
+            int hashSize = 128;
+
+            // PBEKeySpec a partir dels arguments rebuts indica a l'algoritme la manera de generar el hash
+            PBEKeySpec spec = new PBEKeySpec(pwCh, saltB, iteracions, hashSize);
+            // instància de l'algoritme PBKDF2 per generar el hash a partir dels paràmetres del spec
+            SecretKeyFactory scrKF = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+            // a partir del SecretKeyFactory, generem el hash amb l'spec i amb getEncoded() pasem el hash en array de byte[]
+            byte[] hashB = scrKF.generateSecret(spec).getEncoded();
+
+            HexFormat hex = HexFormat.of();
+            // convertim l'array de bytes del hash en hexadecimal llegible
+            hashPBKDF2 = hex.formatHex(hashB);
+        // capturem els tipus d'excepcions per mostrar-los el fil d'execucions
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
+        // retorna el hash sigui null o s'hagi generat en el bloc del try
+        return hashPBKDF2;
+    }
     public String forcaBruta (String alg, String hash, String salt) {
+        npass = 0;
         // amb l'ajuda del charset simplificat, farem la força bruta perquè no duri molt llarga la comprobació
         // bucle aniuat, que comproba per cada lletra, de la posició 0 o 1 fins 5 o 6.
         // password en char[]
         return "";
     }
+    
     // mètode que calcula el temps en millis
     public String getInterval(long t1, long t2) { return ""; }
 
