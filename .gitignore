@@ -1,11 +1,11 @@
 # Ignorar archivos compilados
 *.class
-# *.jar
+*.jar
 # *.war
 # 
 
 # Ignorar directorios de salida de Maven
-# /target/
+/target/
 
 # Ignorar configuraciones locales de IDEs (si se usa IntelliJ, Eclipse, etc)
 # .idea/
