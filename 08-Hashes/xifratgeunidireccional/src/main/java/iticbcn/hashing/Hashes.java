@@ -46,7 +46,7 @@ public class Hashes {
             char[] pwCh = pw.toCharArray();
             byte[] saltB = salt.getBytes(StandardCharsets.UTF_8);
             // vegades que itera generar el hash
-            int iteracions = 1000;
+            int iteracions = 65536;
             // tamany del hash a generar de 128 bits
             int hashSize = 128;
 
@@ -139,7 +139,25 @@ public class Hashes {
     
     // mètode que calcula el temps en millis
     public String getInterval(long t1, long t2) {
-        return "";
+        long millis = t2 - t1;
+        // segons totals
+        long seg = millis/1000;
+        // li aplico el modul i es reasigna a millis els millis sobrants
+        millis %= 1000;
+        // minuts totals
+        long min = seg / 60;
+        // reasigno els segons que sobren de treure-li els minuts
+        seg %= 60;
+        // hores totals
+        long hores = min / 60;
+        // reasigno minutus sobrants després de deduir les hores
+        min %= 60;
+        // dies totals
+        long dies = hores / 24;
+        // reasigno hores sobrants després de deduir els dies
+        hores %= 24;
+        // retorno la cadena de string formatejat
+        return String.format("%d dies / %d hores / %d minuts / %d segons / %d millis", dies, hores, min, seg, millis);
     }
 
     public static void main(String[] args) throws Exception {

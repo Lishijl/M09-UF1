@@ -1,5 +1,5 @@
 RESULTATS D'EXECUCIONS:
-=================================
+====================================
 
 ## Aquí aniré implementant els TestResults de les execucions de totes les pràctiques a partir d'ara.
 
@@ -18,8 +18,65 @@ RESULTATS D'EXECUCIONS:
 
 ### Per a la pràctica:
 
+08-Hashes - Xifratge Unidireccional
+====================================
+
+### - Execució: desde l'IDE Visual Studio Code (Run)
+
+*He reduït algunes iteracions per l'algorisme PBKDF2 alhora de l'execució o sinó se'm faria etern, però pel programa ho he deixat a 65536 iteracions.*
+
+**Algorisme PBKDF2 amb 1 iteració**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd
+223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 6729708
+Temps : 0 dies / 0 hores / 0 minuts / 21 segons / 701 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: ff99f324f538b86713836ffadaacc8f1
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 6729708
+Temps : 0 dies / 0 hores / 0 minuts / 59 segons / 776 millis
+---------------------------
+```
+
+**Algorisme PBKDF2 amb 10 iteracions**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd
+223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 6729708
+Temps : 0 dies / 0 hores / 0 minuts / 28 segons / 63 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: 8d58735ebea93882afd18ccf08c73bac
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 6729708
+Temps : 0 dies / 0 hores / 3 minuts / 22 segons / 807 millis
+---------------------------
+```
+
+***Cal destacar que algunes execucions s'han fet mentres esperava que forçaBruta() d'altres execucions acabessin.***
+
 07-Public_key - Parella de claus RSA
-=================================
+====================================
 
 ### - Comanda d'execució: mvn exec:java -Dexec.mainClass="iticbcn.xifratge.Main"
 
