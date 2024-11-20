@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
 public class Hashes {
-
+    // nombre de proves per algorisme
     int npass;
 
     // dos mètodes hashing que genera un hash del password amb un salt amb dos tipus d'algorismes SHA-512 i PBKDF2
@@ -70,15 +70,77 @@ public class Hashes {
         return hashPBKDF2;
     }
     public String forcaBruta (String alg, String hash, String salt) {
+        // reinicia el comptador de vegades que s'ha provat les contrasenya per cada algorisme
         npass = 0;
+        // charset que utilitzarem per comprovar per cada posició de la contrasenya si el hash coincideix
+        char[] charset = "abcdefABCDEF1234567890!".toCharArray();
+        // màxim longitud de clau a trobar de 6 caràcters
+        char[] pwTrobat = new char[6];
+        // StringBuffer que per cada longitud de characters diferents, que s'hagin buscat
+        // el seu hash, si no retorna null, es guarda en el StringBuffer.
+        String pw = null;
+
+        // iterem 6 vegades per cada posició de la contrasenya a trobar
+        for (int pos = 1; pos <= pwTrobat.length; pos++) {
+            // per diferents longituds de contrasenya, amb fors aninuats verifiquem si hi ha hash coincident
+            for (int i = 0; i < charset.length; i++) {
+                // per a la posició 0, comprobarem amb tots els caràcters del charset
+                pwTrobat[0] = charset[i];
+                // comproba si s'ha trobat el hash coincident, en cas de que si, retorna el resultat trencant el bucle
+                // si es la posició actual de la lletra, i no ha trobat resultat i pw és null, continúa els bucles anidats
+                if (pos == 1 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                for (int j = 0; j < charset.length; j++) {
+                    pwTrobat[1] = charset[j];
+                    if (pos == 2 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                    for (int k = 0; k < charset.length; k++) {
+                        pwTrobat[2] = charset[k];
+                        if (pos == 3 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                        for (int l = 0; l < charset.length; l++) {
+                            pwTrobat[3] = charset[l];
+                            if (pos == 4 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                            for (int m = 0; m < charset.length; m++) {
+                                pwTrobat[4] = charset[m];
+                                if (pos == 5 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                                for (int n = 0; n < charset.length; n++) {
+                                    pwTrobat[5] = charset[n];
+                                    if (pos == 6 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                                }   // 6
+                            }   // 5
+                        }   // 4
+                    }   // 3
+                }   // 2
+            }   // 1
+        }
+
         // amb l'ajuda del charset simplificat, farem la força bruta perquè no duri molt llarga la comprobació
         // bucle aniuat, que comproba per cada lletra, de la posició 0 o 1 fins 5 o 6.
         // password en char[]
-        return "";
+        return pw;
+    }
+    // mètode privat que per cada cadena de String rebut, tipus d'algorisme, el hash original amb el que comparar i el salt per construir
+    // un nou hash a partir del String rebut com a contrasenya de testeig, si troba coincidencia, retorna l'String rebut original com a contrasenya
+    // trobada
+    private String testPw(String pwTest, String alg, String hash, String salt) {
+        String hashTrobat = null;
+        String result = null;
+        if (alg.equals("SHA-512")) {
+            // li passem la contrasenya generada en força bruta per extreure un hash amb la que comparar amb el hash original
+            hashTrobat = getSHA512AmbSalt(pwTest, salt);
+            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwTest;
+        } else if (alg.equals("PBKDF2")) {
+            hashTrobat = getPBKDF2AmbSalt(pwTest, salt);
+            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwTest;
+        }
+        // intents de hashos comparats
+        npass++;
+        // si troba retorna pwTest, sinó null
+        return result;
     }
     
     // mètode que calcula el temps en millis
-    public String getInterval(long t1, long t2) { return ""; }
+    public String getInterval(long t1, long t2) {
+        return "";
+    }
 
     public static void main(String[] args) throws Exception {
         String salt = "qpoweiruañslkdfjz";
