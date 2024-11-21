@@ -23,19 +23,41 @@ RESULTATS D'EXECUCIONS:
 
 ### - Execució: desde l'IDE Visual Studio Code (Run)
 
-*He reduït algunes iteracions per l'algorisme PBKDF2 alhora de l'execució o sinó se'm faria etern, però pel programa ho he deixat a 65536 iteracions.*
+*Com que ara fa les proves exactes, ja no em cal reduïr les iteracions per l'algorisme PBKDF2 alhora de l'execució, ho he deixat a 65536 iteracions.*
+
+**Algorisme PBKDF2 amb: 65536 iteracions vs 1 iteració**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 41 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: 618f0941c18eba57fa127b25aa41203d
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 19 segons / 183 millis
+---------------------------
+```
 
 **Algorisme PBKDF2 amb 1 iteració**
 ```
 ===========================
 Algorisme: SHA-512
-Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd
-223e0a5f8897ecf13ae25bae49b4bd5ed4
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
 ---------------------------
 -- Inici de força bruta ---
 Pass : aaabF!
-Provats: 6729708
-Temps : 0 dies / 0 hores / 0 minuts / 21 segons / 701 millis
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 47 millis
 ---------------------------
 
 ===========================
@@ -44,8 +66,8 @@ Hash: ff99f324f538b86713836ffadaacc8f1
 ---------------------------
 -- Inici de força bruta ---
 Pass : aaabF!
-Provats: 6729708
-Temps : 0 dies / 0 hores / 0 minuts / 59 segons / 776 millis
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 89 millis
 ---------------------------
 ```
 
@@ -53,13 +75,12 @@ Temps : 0 dies / 0 hores / 0 minuts / 59 segons / 776 millis
 ```
 ===========================
 Algorisme: SHA-512
-Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd
-223e0a5f8897ecf13ae25bae49b4bd5ed4
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
 ---------------------------
 -- Inici de força bruta ---
 Pass : aaabF!
-Provats: 6729708
-Temps : 0 dies / 0 hores / 0 minuts / 28 segons / 63 millis
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 47 millis
 ---------------------------
 
 ===========================
@@ -68,12 +89,79 @@ Hash: 8d58735ebea93882afd18ccf08c73bac
 ---------------------------
 -- Inici de força bruta ---
 Pass : aaabF!
-Provats: 6729708
-Temps : 0 dies / 0 hores / 3 minuts / 22 segons / 807 millis
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 140 millis
 ---------------------------
 ```
 
-***Cal destacar que algunes execucions s'han fet mentres esperava que forçaBruta() d'altres execucions acabessin.***
+**Algorisme PBKDF2 amb 100 iteracions**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 47 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: 0d96262be1a04f386f99a39f600277fe
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 266 millis
+---------------------------
+```
+
+**Algorisme PBKDF2 amb 1000 iteracions**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 58 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: bdf489bd0d870b6bb6c0a9ba5e7b89a2
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 750 millis
+---------------------------
+```
+
+**Algorisme PBKDF2 amb 10000 iteracions**
+```
+===========================
+Algorisme: SHA-512
+Hash: 6a6d2e8b5af7a59cf8f11522f184d6398ec3faf28a4b37f3ad5435819a1dee1b891e0eb843559bdaeda913e49445dd223e0a5f8897ecf13ae25bae49b4bd5ed4
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 0 segons / 54 millis
+---------------------------
+
+===========================
+Algorisme: PBKDF2
+Hash: 173f51b366956f700805b5c0c38ee3ce
+---------------------------
+-- Inici de força bruta ---
+Pass : aaabF!
+Provats: 845
+Temps : 0 dies / 0 hores / 0 minuts / 3 segons / 833 millis
+---------------------------
+```
 
 07-Public_key - Parella de claus RSA
 ====================================

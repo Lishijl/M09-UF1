@@ -88,22 +88,22 @@ public class Hashes {
                 pwTrobat[0] = charset[i];
                 // comproba si s'ha trobat el hash coincident, en cas de que si, retorna el resultat trencant el bucle
                 // si es la posició actual de la lletra, i no ha trobat resultat i pw és null, continúa els bucles anidats
-                if (pos == 1 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                if ((pw = testPw(pwTrobat, 1, alg, hash, salt)) != null) return pw;
                 for (int j = 0; j < charset.length; j++) {
                     pwTrobat[1] = charset[j];
-                    if (pos == 2 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                    if ((pw = testPw(pwTrobat, 2, alg, hash, salt)) != null) return pw;
                     for (int k = 0; k < charset.length; k++) {
                         pwTrobat[2] = charset[k];
-                        if (pos == 3 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                        if ((pw = testPw(pwTrobat, 3, alg, hash, salt)) != null) return pw;
                         for (int l = 0; l < charset.length; l++) {
                             pwTrobat[3] = charset[l];
-                            if (pos == 4 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                            if ((pw = testPw(pwTrobat, 4, alg, hash, salt)) != null) return pw;
                             for (int m = 0; m < charset.length; m++) {
                                 pwTrobat[4] = charset[m];
-                                if (pos == 5 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                                if ((pw = testPw(pwTrobat, 5, alg, hash, salt)) != null) return pw;
                                 for (int n = 0; n < charset.length; n++) {
                                     pwTrobat[5] = charset[n];
-                                    if (pos == 6 && (pw = testPw(new String(pwTrobat, 0, pos), alg, hash, salt)) != null) return pw;
+                                    if ((pw = testPw(pwTrobat, 6, alg, hash, salt)) != null) return pw;
                                 }   // 6
                             }   // 5
                         }   // 4
@@ -117,19 +117,31 @@ public class Hashes {
         // password en char[]
         return pw;
     }
+
+    // mètode que construeix i retorna un String a partir del char[] de contrasenya fins a la longitud rebuda
+    public String construeixString(char[] pwChars, int longitud) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < longitud; i++) {
+            sb.append(pwChars[i]);
+        }
+        return sb.toString();
+    }
+
     // mètode privat que per cada cadena de String rebut, tipus d'algorisme, el hash original amb el que comparar i el salt per construir
     // un nou hash a partir del String rebut com a contrasenya de testeig, si troba coincidencia, retorna l'String rebut original com a contrasenya
     // trobada
-    private String testPw(String pwTest, String alg, String hash, String salt) {
+    private String testPw(char[] pwChars, int longitud, String alg, String hash, String salt) {
+        String pwBuilded = construeixString(pwChars, longitud);
         String hashTrobat = null;
         String result = null;
+
         if (alg.equals("SHA-512")) {
             // li passem la contrasenya generada en força bruta per extreure un hash amb la que comparar amb el hash original
-            hashTrobat = getSHA512AmbSalt(pwTest, salt);
-            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwTest;
+            hashTrobat = getSHA512AmbSalt(pwBuilded, salt);
+            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwBuilded;
         } else if (alg.equals("PBKDF2")) {
-            hashTrobat = getPBKDF2AmbSalt(pwTest, salt);
-            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwTest;
+            hashTrobat = getPBKDF2AmbSalt(pwBuilded, salt);
+            if (hashTrobat != null && hashTrobat.equals(hash)) result = pwBuilded;
         }
         // intents de hashos comparats
         npass++;
